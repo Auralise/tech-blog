@@ -43,7 +43,7 @@ Comment.init(
     },
     {
         hooks: {
-            //TODO test and confirm. The usage of the "now" default value of now outside of the context of default values is not explicity shown in the docs however I have not been able to find a reason in the source code as to why this would not work with Hooks. 
+            //TODO test and confirm. The usage of the "now" default value outside of the context of default values is not explicity shown in the docs however I have not been able to find a reason in the source code as to why this would not work with Hooks. 
             beforeUpdate: (postData) => {
                 postData.last_updated = now;
                 return postData;
