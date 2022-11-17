@@ -1,5 +1,4 @@
 const { Model, DataTypes } = require("sequelize");
-const { now } = require("sequelize/types/utils");
 const sequelize = require("../config/connection");
 
 class Comment extends Model {}
@@ -14,12 +13,12 @@ Comment.init(
         },
         timestamp: {
             type: DataTypes.DATE,
-            defaultValue: now,
+            defaultValue: DataTypes.NOW,
             allowNull: false,
         },
         last_updated: {
             type: DataTypes.DATE,
-            defaultValue: now,
+            defaultValue: DataTypes.NOW,
             allowNull: false,
         },
         contents: {
@@ -44,9 +43,9 @@ Comment.init(
     {
         hooks: {
             //TODO test and confirm. The usage of the "now" default value outside of the context of default values is not explicity shown in the docs however I have not been able to find a reason in the source code as to why this would not work with Hooks. 
-            beforeUpdate: (postData) => {
-                postData.last_updated = now;
-                return postData;
+            beforeUpdate: (commentData) => {
+                commentData.last_updated = DataTypes.NOW;
+                return commentData;
             }
         },
         sequelize,
