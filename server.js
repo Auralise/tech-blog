@@ -15,19 +15,17 @@ const PORT = process.env.PORT || 3001;
 
 const hbs = exphbs.create({ helpers });
 
-const sessConfig = {
+const sessionConfig = {
     secret: process.env.SESSION_SECRET,
     cookie: {
         //TODO: config
     },
     resave: false,
     saveUninitialized: true,
-    store: new SequelizeStore({
-        db: sequelize
-    }),
+    store: new SequelizeStore({ db: sequelize }),
 };
 
-app.use(session(sessConfig));
+app.use(session(sessionConfig));
 
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
