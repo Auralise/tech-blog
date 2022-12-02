@@ -13,10 +13,12 @@
             <a href="/">Home</a>
             {{#if logged_in}}
             <a href="/new-post">New Post</a>
+
             <a href="#" id="logout" class="right">Logout</a>
             {{else}}
             <a href="/login" class="nav-link right">Login</a>
             <a href="/register" class="nav-link">Register</a>
+
             {{/if}}
         </nav>
     </header>
