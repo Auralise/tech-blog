@@ -7,3 +7,4 @@ const homeRoutes = require("./page-routes");
 router.use("/", homeRoutes);
 router.use("/api", apiRoutes);
 
+module.exports = router;
