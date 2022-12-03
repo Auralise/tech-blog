@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User } = require("../../models");
+const checkAuth = require("../../utils/express-middleware/auth")
 
 
 
@@ -102,18 +103,42 @@ router.post("/register", async (req, res) => {
 });
 
 
-router.post("/logout", async (req, res) => {
+router.post("/logout", checkAuth, async (req, res) => {
 
-    if (req.session.logged_in){
+    if (req.session.logged_in) {
         req.session.destroy(() => {
             res.status(204).end();
-        }); 
+        });
     } else {
         res.status(404).end();
     }
 
 
-})
+});
+
+router.post("/update", checkAuth, async (req, res) => {
+    try {
+        if (!req.body.password) {
+            res.status(400).json({
+                message: "Please provide a password to update",
+            });
+            return;
+        }
+
+        await User.update({ password: req.body.password })
+
+        res.status(200).json({
+            message: "Successfully updated password",
+        });
+
+    } catch (err) {
+        console.error(err);
+
+        res.status(500).json({
+            message: "An internal server error occurred",
+        });
+    }
+});
 
 
 
