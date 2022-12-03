@@ -1,23 +1,16 @@
 <section class="login">
 
-    <form action="">
+    <form id="login-form" class="form">
         <label for="email">Email:</label>
         <input type="text" id="email" name="email">
 
         <label for="password">Password:</label>
         <input type="password" id="password" name="password">
-        {{#if signup}}
-        <input type="submit" id="submit" value="Sign Up!">
-        {{else}}
-        <input type="submit" id="submit" value="Login">
-        <a href="/sign-up">Sign up</a>
-        {{/if}}
+
+        <button type="submit" id="submit" class="submit-button">Log In</button>
     </form>
 
-{{#if signup}}
-    <script src="/js/signup.js"></script>
-{{else}}
+
     <script src="/js/login.js"></script>
-{{/if}}
 
 </section>
