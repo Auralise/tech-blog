@@ -29,7 +29,7 @@ router.post("/login", async (req, res) => {
 
             return;
         } else {
-
+            //Create session if password is correct
             req.session.save(() => {
 
                 req.session.user_id = userData.id;
@@ -55,6 +55,51 @@ router.post("/login", async (req, res) => {
 
 
 
+router.post("/register", async (req, res) => {
+    try {
+        if (
+            !req.body.username ||
+            !req.body.email ||
+            !req.body.password
+        ) {
+            res.status(400).json({
+                message: "Please provide a username, email and password",
+            });
+            return;
+        }
+
+        const { username, email, password } = req.body;
+
+        const newUser = await User.create({
+            username: username,
+            email: email,
+            password: password,
+        });
+
+        if (newUser) {
+            //Create new session if successful
+            req.session.save(() => {
+
+                req.session.user_id = newUser.id;
+                req.session.logged_in = true;
+
+                res.status(201).json({
+                    message: "Successfully created user",
+                });
+            })
+        } else {
+            throw new Error("Failed to create user");
+        }
+
+
+    } catch (err) {
+        console.error(err);
+
+        res.status(500).json({
+            message: "An internal server error occured",
+        });
+    }
+});
 
 
 
