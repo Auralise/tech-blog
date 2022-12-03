@@ -1,0 +1,79 @@
+:root {
+    --header-color: darkgrey;
+    --nav-hover: grey;
+    
+    --hover-transition: 100ms;
+
+    --nav-border-style: none;
+    --nav-border-color: lightgrey;
+    --nav-border-thickness: 1px;
+
+    --font-size: 15px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: var(--font-size);
+}
+
+header {
+    margin: 0;
+    min-height: 7.5vh;
+    min-width: 100vw;
+    background-color: var(--header-color);
+    position: sticky;
+    padding: 1em 0 0 0;
+    border-bottom: 1px solid black;
+}
+
+header h1 {
+    font-size: 175%;
+}
+
+.background {
+    background-color: white;
+}
+
+.centered {
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+nav {
+    display: flex;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: black;
+    padding: .75em 1em;
+    border: var(--nav-border-style) var(--nav-border-thickness) var(--nav-border-color);
+    border-right: none;
+    transition: ease-in var(--hover-transition);
+}
+
+.nav-link:last-of-type {
+    border-right: var(--nav-border-style) var(--nav-border-thickness) var(--nav-border-color);
+}
+
+.nav-link:hover {
+    background-color: var(--nav-hover);
+}
+
+.no-decoration {
+    text-decoration: none;
+    color: black;
+}
+
+.no-decoration:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.no-decoration:visited {
+    text-decoration: none;
+    color: black;
+}
