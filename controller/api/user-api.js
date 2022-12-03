@@ -2,14 +2,9 @@ const router = require("express").Router();
 const { User } = require("../../models");
 const checkAuth = require("../../utils/express-middleware/auth")
 
-
-
-
-
-
 router.post("/login", async (req, res) => {
     try {
-        const userData = User.findOne({
+        const userData = await User.findOne({
             where: {
                 username: req.body.username,
             },
