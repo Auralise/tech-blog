@@ -4,11 +4,12 @@ const passwordInput = document.querySelector("#password");
 const submitButton = document.querySelector("#register-submit")
 const messageBox = document.querySelector("#message-box");
 
+const {clearMessageBox, writeMessageBox} = require("./messageBox");
+
 const registrationHandler = async (event) => {
     event.preventDefault();
 
-    messageBox.textContent = "";
-    messageBox.classList.remove("error-text");
+    clearMessageBox(messageBox);
 
     const requestBody = {
         username: usernameInput.value,
@@ -18,19 +19,21 @@ const registrationHandler = async (event) => {
     }
 
     //input validation
-    if (!requestBody.username && requestBody.email && requestBody.password) {
-        messageBox.classList.add("error-text");
-        messageBox.textContent = "Please enter a username, password and email";
+    if (!requestBody.username || !requestBody.email || !requestBody.password) {
+        writeMessageBox(messageBox, "Please enter a username, password and email");
         return;
     } else if (requestBody.username.length < 3 || !requestBody.username.match(/^[a-z]+[a-z0-9]{2,14}$/i)) {
-        messageBox.classList.add("error-text");
-        messageBox.textContent = "Please enter an alphanumeric username, starting with a letter which is between 3 and 15 characters long";
+        writeMessageBox(messageBox, "Please enter an alphanumeric username, starting with a letter which is between 3 and 15 characters long");
+        return;
+
     } else if (!requestBody.email.match(/^[a-z0-9]+(?:[._-][a-z0-9]+|[a-z0-9]*)*@[a-z0-9]+\.(?:(com)|(org)|(net))(?:.[a-z]{2,2})?$/i)) {
-        messageBox.classList.add("error-text");
-        messageBox.textContent = "Please enter a valid email address";
+        writeMessageBox(messageBox, "Please enter a valid email address");
+        return; 
+
     } else if (!requestBody.password.length < 8) {
-        messageBox.classList.add("error-text");
-        messageBox.textContent = "Please enter a password which is 8 or more characters long"
+        // I have decided not to perform password complexity checking as this is just an example project/assignment
+        writeMessageBox(messageBox, "Please enter a password which is 8 or more characters long");
+        return;
     }
 
     const response = await fetch("/api/user/register", {
@@ -44,8 +47,13 @@ const registrationHandler = async (event) => {
     if (response.ok) {
         document.location.replace("/");
     } else if (response.status === 500) {
+        //Redirect to server error page?
         const responseData = await response.json();
-        messageBox.textContent = responseData.message;
+        writeMessageBox(messageBox, responseData.message);
+    } else {
+        //User input error
+        const responseData = await response.json();
+        writeMessageBox(messageBox, responseData.message);
     }
 
 
