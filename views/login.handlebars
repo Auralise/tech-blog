@@ -1,16 +1,21 @@
-<section class="login">
+<section class="login-wrapper">
 
-    <form id="login-form" class="form">
-        <label for="email">Email:</label>
-        <input type="text" id="email" name="email">
+    {{> login-hero}}
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password">
-
-        <button type="submit" id="submit" class="submit-button">Log In</button>
-    </form>
+    <section class="login-form">
+        <form id="login-form" class="form-card">
+            <h3>Login:</h3>
+            <label for="email" class="form-label">Email:</label>
+            <input type="text" id="email" name="email" class="form-text-input">
 
 
-    <script src="/js/login.js"></script>
 
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" id="password" name="password" class="form-text-input">
+
+
+            <button type="submit" id="submit" class="form-submit-button">Log In</button>
+        </form>
+    </section>
 </section>
+<script src="/js/login.js"></script>
