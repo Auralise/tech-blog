@@ -4,8 +4,6 @@ const passwordInput = document.querySelector("#password");
 const submitButton = document.querySelector("#register-submit")
 const messageBox = document.querySelector("#message-box");
 
-const {clearMessageBox, writeMessageBox} = require("./messageBox");
-
 const registrationHandler = async (event) => {
     event.preventDefault();
 
