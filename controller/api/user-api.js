@@ -6,7 +6,7 @@ router.post("/login", async (req, res) => {
     try {
         const userData = await User.findOne({
             where: {
-                username: req.body.username,
+                username: req.body.email,
             },
         });
 
@@ -99,13 +99,19 @@ router.post("/register", async (req, res) => {
 
 
 router.post("/logout", checkAuth, async (req, res) => {
-
-    if (req.session.logged_in) {
-        req.session.destroy(() => {
-            res.status(204).end();
+    try {
+        if (req.session.logged_in) {
+            req.session.destroy(() => {
+                res.status(204).end();
+            });
+        } else {
+            res.status(404).end();
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            message: "An internal server error occurred",
         });
-    } else {
-        res.status(404).end();
     }
 
 
