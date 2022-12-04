@@ -106,7 +106,9 @@ nav {
 
 .form-submit-button {
     margin-top: 1em;
-    padding: 0 2em;
+    padding: .5em 2em;
+    align-self: flex-end;
+    border-radius: 4px;
 }
 
 /* .form-label {
@@ -146,4 +148,35 @@ nav {
 
 .login-form h3 {
     font-size: larger;
+    align-self: flex-start;
+    margin-bottom: .5em;
+}
+
+
+
+
+/* button specific styling */
+
+.green-button {
+    border: lightgrey 1px solid;
+    background-color: rgb(93, 219, 93);
+    color: black;
+    transition: ease-in var(--hover-transition);
+}
+
+.green-button:hover {
+    background-color: rgb(4, 224, 22);
+    cursor: pointer;
+}
+
+.blue-button {
+    border: lightblue 1px solid;
+    background-color: rgb(59, 59, 230);
+    color: white;
+    transition: ease-in var(--hover-transition);
+}
+
+.blue-button:hover {
+    background-color: rgb(4, 4, 221);
+    cursor: pointer;
 }
