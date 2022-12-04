@@ -1,7 +1,7 @@
 :root {
     --header-color: darkgrey;
     --nav-hover: grey;
-    
+
     --hover-transition: 100ms;
 
     --nav-border-style: none;
@@ -42,6 +42,8 @@ header h1 {
     margin: 0 auto;
 }
 
+/* Nav configuration */
+
 nav {
     display: flex;
 }
@@ -76,4 +78,72 @@ nav {
 .no-decoration:visited {
     text-decoration: none;
     color: black;
+}
+
+/* generic form configuration */
+
+.form-card {
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.5vh;
+
+}
+
+.form-text-input {
+    border: inset 2px;
+    border-radius: 5px;
+    min-width: 100%;
+}
+
+.form-label {
+    text-align: left;
+    align-self: flex-start;
+}
+
+.form-submit-button {
+    margin-top: 1em;
+    padding: 0 2em;
+}
+
+/* .form-label {
+    min-width: 1;
+} */
+
+
+/* login form specific */
+.login-wrapper {
+    margin-top: 2.5vh;
+    display: flex;
+
+}
+
+.login-hero {
+    border-right: solid 1px grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 50%;
+}
+
+.login-hero h2 {
+    font-size: 200%;
+}
+
+.login-hero p {
+    font-size: larger;
+}
+
+.login-form {
+    padding: 0 10%;
+    flex: 1 1 50%;
+    max-width: 60%;
+}
+
+.login-form h3 {
+    font-size: larger;
 }
