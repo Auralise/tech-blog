@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const emailInput = document.querySelector("#email");
 const passwordInput = document.querySelector("#password");
 const submitButton = document.querySelector("#login-submit");
@@ -10,8 +11,8 @@ const loginHandler = async (event) => {
     clearMessageBox(messageBox);
 
     const requestBody = {
-        email: emailInput.value,
-        password: passwordInput.value,
+        email: emailInput.value.trim(),
+        password: passwordInput.value.trim(),
     }
 
     if (!requestBody.email || !requestBody.password){

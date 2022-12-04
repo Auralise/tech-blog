@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const usernameInput = document.querySelector("#username");
 const emailInput = document.querySelector("#email");
 const passwordInput = document.querySelector("#password");
@@ -10,9 +11,9 @@ const registrationHandler = async (event) => {
     clearMessageBox(messageBox);
 
     const requestBody = {
-        username: usernameInput.value,
-        email: emailInput.value,
-        password: passwordInput.value,
+        username: usernameInput.value.trim(),
+        email: emailInput.value.trim(),
+        password: passwordInput.value.trim(),
 
     }
 
@@ -28,7 +29,7 @@ const registrationHandler = async (event) => {
         writeMessageBox(messageBox, "Please enter a valid email address");
         return; 
 
-    } else if (!requestBody.password.length < 8) {
+    } else if (requestBody.password.length < 8) {
         // I have decided not to perform password complexity checking as this is just an example project/assignment
         writeMessageBox(messageBox, "Please enter a password which is 8 or more characters long");
         return;
