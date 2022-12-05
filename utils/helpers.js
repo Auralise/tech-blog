@@ -10,7 +10,7 @@ const format_post = (postContent) => {
         }
     })
 
-    return `<div class="post-content"><p> ${cleanedContent.map(para => para.trim()).join("</p>\n<p>")}</p></div>`;
+    return `<p> ${cleanedContent.map(para => para.trim()).join("</p>\n<p>")}</p>`;
 
 }
 
