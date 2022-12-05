@@ -23,7 +23,9 @@ router.get("/", async (req, res) => {
 
 router.get("/dashboard", checkAuth, async (req, res) => {
     const postsData = await Post.findAll({
-        limit: 5,
+        where: {
+            user_id: req.session.user_id,
+        },
         order: [
             ['created_at', 'DESC'],
         ],
