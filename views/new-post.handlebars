@@ -1,13 +1,19 @@
-<section class="new-post">
-    <form action="">
-        
-        <label for="post-title">Title</label>
-        <input name="post-title" id="post-title">
+<section class="form-wrapper">
+    <h2>New Post!</h2>
+    <form class="form-card">
 
-        <label for="post-content">Content</label>
-        <textarea name="post-content" id="post-content" rows="10"></textarea>
+        <label for="post-title" class="form-label">Title</label>
+        <input name="post-title" id="post-title" class="form-text-input">
 
-        <input type="submit" id="submit" value="Post!">
+        <label for="post-content" class="form-label">Content</label>
+        <textarea name="post-content" id="post-content" rows="10" class="form-text-input-large"></textarea>
+
+        <div class="button-message-row">
+            <span id="message-box" class="form-message-box"></span>
+            <button type="submit" id="submit" class="button green-button">Submit</button>
+        </div>
     </form>
 
 </section>
+<script src="/js/messageBox.js"></script>
+<script src="/js/new-post.js"></script>
