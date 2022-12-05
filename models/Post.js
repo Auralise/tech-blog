@@ -23,31 +23,17 @@ Post.init(
             type: DataTypes.TEXT,
             allowNull: false,
         },
-        posted_time: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            defaultValue: DataTypes.NOW,
-        },
-        last_updated: {
-            type: DataTypes.DATE,
-            defaultValue: DataTypes.NOW,
-            allowNull: false,
-        },
+
         user_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: "user",
                 key: "id",
             },
+            allowNull: false,
         },
     },
     {
-        hooks: {
-            beforeUpdate: postData => {
-                postData.last_updated = DataTypes.NOW;
-                return postData;
-            }
-        },
         sequelize,
         timestamps: true,
         freezeTableName: true,

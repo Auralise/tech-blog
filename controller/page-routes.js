@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Post, Comment } = require("../models");
+const { Post, Comment, User } = require("../models");
 const checkAuth = require("../utils/express-middleware/auth");
 
 
@@ -12,12 +12,12 @@ router.get("/", async (req, res) => {
         include: [{ model: Comment, limit: 3 }],
     });
 
-    const posts = postsData.map(post => post.get({plain: true}));
+    const posts = postsData.map(post => post.get({ plain: true }));
 
     res.render("homepage", {
         posts,
         logged_in: req.session.logged_in
-    }); 
+    });
 
 });
 
@@ -26,9 +26,15 @@ router.get("/dashboard", checkAuth, async (req, res) => {
         where: {
             user_id: req.session.user_id,
         },
+        order: [
+            ['created_at', 'DESC'],
+        ],
+        include: [
+            { model: User }
+        ]
     });
 
-    const posts = postsData.map(post => post.get({plain: true}));
+    const posts = postsData.map(post => post.get({ plain: true }));
 
     res.render("dashboard", {
         posts,
@@ -55,8 +61,7 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/register", async (req, res) => {
-    if (req.session.logged_in)
-    {
+    if (req.session.logged_in) {
         res.redirect("/");
     } else {
         res.render("register", {
@@ -72,8 +77,8 @@ router.get("/posts/:id", async (req, res) => {
     });
 
 
-    const post = postData.map(content => content.get({plain: true}));
-    
+    const post = postData.map(content => content.get({ plain: true }));
+
     res.render("post-page", {
         post,
         logged_in: req.session.logged_in
