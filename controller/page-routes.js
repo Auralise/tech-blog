@@ -8,15 +8,33 @@ router.get("/", async (req, res) => {
 
     const postsData = await Post.findAll({
         limit: 5,
-        order: [["last_updated", "DESC"]],
-        include: [{ model: Comment, limit: 3 }],
+        order: [["created_at", "DESC"]],
+        include: [
+            { 
+                model: Comment,
+                limit: 3,
+                //Include user who made comment
+                include: {
+                    model: User
+                }
+             },
+            { 
+                model: User,
+                attributes: {
+                    exclude: ['password']
+                }
+            }
+        ],
+
     });
 
     const posts = postsData.map(post => post.get({ plain: true }));
+    
 
     res.render("homepage", {
-        posts,
-        logged_in: req.session.logged_in
+        posts: posts,
+        logged_in: req.session.logged_in,
+        current_user_id: req.session.user_id,
     });
 
 });
