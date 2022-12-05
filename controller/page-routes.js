@@ -95,7 +95,7 @@ router.get("/register", async (req, res) => {
     }
 })
 
-router.get("/posts/:id", async (req, res) => {
+router.get("/posts/:id", checkAuth, async (req, res) => {
     const postData = await Post.findByPk(req.params.id, {
         include: [{ model: Comment }],
     });
@@ -103,8 +103,8 @@ router.get("/posts/:id", async (req, res) => {
 
     const post = postData.get({ plain: true });
 
-    if (req.query.edit === true) {
-        res.render("edit-page", {
+    if (req.query.edit === 'true') {
+        res.render("edit-post", {
             post,
             logged_in: req.session.logged_in,
         })
