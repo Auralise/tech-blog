@@ -33,7 +33,8 @@ router.put("/:id", checkAuth, async (req, res) => {
 
         if (rowsUpdate[0]) {
             res.status(200).json({
-                message: "Successfully updated post"
+                message: "Successfully updated post",
+                redirect: `/posts/${req.params.id}`
             });
         } else {
             throw new Error(`Failed to update post with id: ${req.params.id}`)
