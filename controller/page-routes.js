@@ -10,15 +10,15 @@ router.get("/", async (req, res) => {
         limit: 5,
         order: [["created_at", "DESC"]],
         include: [
-            { 
+            {
                 model: Comment,
                 limit: 3,
                 //Include user who made comment
                 include: {
                     model: User
                 }
-             },
-            { 
+            },
+            {
                 model: User,
                 attributes: {
                     exclude: ['password']
@@ -29,7 +29,7 @@ router.get("/", async (req, res) => {
     });
 
     const posts = postsData.map(post => post.get({ plain: true }));
-    
+
 
     res.render("homepage", {
         posts: posts,
@@ -48,7 +48,13 @@ router.get("/dashboard", checkAuth, async (req, res) => {
             ['created_at', 'DESC'],
         ],
         include: [
-            { model: User }
+            { model: User },
+            {
+                model: Comment,
+                include: [{
+                    model: User
+                }]
+            },
         ]
     });
 
