@@ -1,0 +1,32 @@
+[
+    {
+        "username": "Barry432",
+        "email": "barry432@example.com",
+        "password": "12345678"
+    },
+    {
+        "username": "John654",
+        "email": "john654@example.com",
+        "password": "12345678"
+    },
+    {
+        "username": "Steven556",
+        "email": "steven556@example.com",
+        "password": "12345678"
+    },
+    {
+        "username": "Bellyache",
+        "email": "help-my-stomach@example.com",
+        "password": "12345678"
+    },
+    {
+        "username": "soref33t",
+        "email": "archpain@example.com",
+        "password": "12345678"
+    },
+    {
+        "username": "ben9952",
+        "email": "ben9952@example.com",
+        "password": "12345678"
+    }
+]
