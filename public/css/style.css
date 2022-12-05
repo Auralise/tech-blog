@@ -155,7 +155,7 @@ nav {
     flex: 0 0 70%;
 }
 
-.form-submit-button {
+.button {
     margin-top: 1em;
     padding: .5em 2em;
     margin-left:auto;
@@ -282,6 +282,18 @@ nav {
 .blue-button:hover {
     background-color: rgb(4, 4, 221);
     cursor: pointer;
+}
+
+.red-button {
+    border: rgb(247, 69, 69) 1px solid;
+    background-color: rgb(253, 76, 76);
+    color: black;
+    transition: ease-in var(--hover-transition);
+}
+
+.red-button:hover {
+    background-color: rgb(240, 32, 32);
+    color: black;
 }
 
 /* text formats */
