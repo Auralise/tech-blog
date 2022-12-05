@@ -101,12 +101,19 @@ router.get("/posts/:id", async (req, res) => {
     });
 
 
-    const post = postData.map(content => content.get({ plain: true }));
+    const post = postData.get({ plain: true });
 
-    res.render("post-page", {
-        post,
-        logged_in: req.session.logged_in
-    });
+    if (req.query.edit === true) {
+        res.render("edit-page", {
+            post,
+            logged_in: req.session.logged_in,
+        })
+    } else {
+        res.render("post-page", {
+            post,
+            logged_in: req.session.logged_in
+        });
+    }
 
 });
 

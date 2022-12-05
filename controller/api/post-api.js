@@ -90,7 +90,7 @@ router.post("/create", checkAuth, async (req, res) => {
             return;
         }
 
-        const reqBody = {...req.body};
+        const reqBody = {...req.body, user_id: req.session.user_id};
 
         const newObject = await Post.create(reqBody);
 
@@ -99,6 +99,7 @@ router.post("/create", checkAuth, async (req, res) => {
         } else {
             res.status(201).json({
                 message: "Successfully created new post",
+                redirect: `/posts/${newObject.id}`,
             });
         }
 

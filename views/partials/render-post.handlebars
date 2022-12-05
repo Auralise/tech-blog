@@ -1,0 +1,27 @@
+<article class="post">
+        <div class="post-header">
+        <h3>{{post.title}}</h3>
+
+        </div>
+        <p class="post-information">Posted by: {{post.user.username}} at {{{format_date post.createdAt post.updatedAt}}} </p>
+        <div class="post-contents">
+        {{{format_post post.contents}}}
+        </div>
+        <div class="post-control">
+            <button data-id="{{post.id}}" class="blue-button button edit-button">Edit Post</button> 
+            <button data-id="{{post.id}}" class="red-button button delete-button">Delete Post</button>
+        </div>
+
+        
+        {{#each post.comments as |comment|}}
+            <div class="comment" data-id="{{comment.id}}">
+                <p class="comment-content">{{comment.contents}}</p>
+                <p class="comment-info">Posted by: {{comment.user.username}} on {{format_date comment.createdAt comment.updatedAt}} 
+                
+                    <a href="#" id="delete-comment" class="comment-interaction" data-id="{{comment.id}}">Delete comment</a>
+                
+                    </p>
+            </div>
+        {{/each}}
+
+    </article>

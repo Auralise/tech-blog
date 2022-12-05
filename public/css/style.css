@@ -146,12 +146,14 @@ nav {
     border: inset 2px;
     border-radius: 5px;
     min-width: 100%;
+    padding: .2em;
 }
 
 .form-text-input-large {
     border: inset 2px;
     border-radius: 5px;
     min-width: 100%;
+    padding: .2em;
 }
 
 .form-label {
