@@ -1,0 +1,12 @@
+{{#each posts as |post|}}
+    <article class="blog-post" data-id="{{post.id}}">
+        <h2 class="post-title">{{post.title}}</h2>
+        {{{format_date post.created_at post.updated_at}}}
+        <div class="post-content">
+        {{{format_post post.contents}}}
+        </div>
+    </article>
+{{else}}
+    <h2 class="center-text">There are no posts here.<h2>
+    <a href="/new-post"><h3 class="center-text"> Perhaps you should make one!</h3></a>
+{{/each}}

@@ -71,10 +71,10 @@ body::before {
 }
 
 .content-wrapper {
-    min-height: 80vh;
+    /* min-height: 80vh; */
     background-color: white;
     position: relative;
-    top: 8vh;
+    top: 10vh;
     padding: 2em 0;
     border: 1px solid black;
     box-shadow: 2px -5px 30px rgb(27, 27, 27), -2px 5px 30px rgb(27, 27, 27);
@@ -165,10 +165,6 @@ nav {
 }
 
 
-/* .form-label {
-    min-width: 1;
-} */
-
 
 /* login form specific */
 .login-wrapper {
@@ -207,8 +203,60 @@ nav {
     margin-bottom: .5em;
 }
 
+/* Posts and comments */
+.post-feed {
+    width: 75%;
+    margin: 0 auto;
+}
 
+.post {
+    border: 1px solid gray;
+    padding: 2em;
+    margin-bottom: 1em;
+    box-shadow: 10px 7px 10px rgb(88, 88, 88);
 
+}
+
+.post > h3 {
+    font-size: 150%;
+}
+
+.post-information {
+    font-size: 80%;
+    color: grey;
+}
+
+.post-contents {
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    border-bottom: gray 1px solid;
+}
+
+.post-contents p {
+    padding: .5em 0;
+}
+
+.comment {
+    border: 1px solid gray;
+    box-shadow: 10px 7px 10px rgb(88, 88, 88);
+    padding: 1em;
+    margin: 1em;
+}
+
+.comment-content {
+    margin-bottom: .5em;
+    padding-bottom: .5em;
+    border-bottom: solid 1px gray;
+
+}
+
+.comment-info {
+    font-size: 80%;
+}
+
+.comment-interaction {
+    margin-left: 2em;
+}
 
 /* button specific styling */
 
@@ -241,3 +289,7 @@ nav {
 .error-text {
     color: red;
 }
+
+
+
+

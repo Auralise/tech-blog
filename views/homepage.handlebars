@@ -1,11 +1,28 @@
 <section class="post-feed">
     {{#each posts as |post|}}
-    <article>
+    <article class="post">
         <h3>{{post.title}}</h3>
+        <p class="post-information">Posted by: {{post.user.username}} at {{{format_date post.createdAt post.updatedAt}}} </p>
+        <div class="post-contents">
+        {{{format_post post.contents}}}
+        </div>
         
-        {{{format_post post.content}}}
-
+        {{#if ../logged_in}}
+            {{#each post.comments as |comment|}}
+                <div class="comment" data-id="{{comment.id}}">
+                    <p class="comment-content">{{comment.contents}}</p>
+                    <p class="comment-info">Posted by: {{comment.user.username}} on {{format_date comment.createdAt comment.updatedAt}} 
+                    {{#if (isUser ../../current_user_id comment.user_id)}}
+                        <a href="#" id="delete-comment" class="comment-interaction" data-id="{{comment.id}}">Delete comment</a>
+                    {{/if}}
+                     </p>
+                </div>
+            {{/each}}
+        {{else}}
+            <p class="">Please <a href="/login">login</a> to view the comments on this post</p>
+        {{/if}}
     </article>
     {{/each}}
+
 </section>
 

@@ -15,21 +15,24 @@ const format_post = (postContent) => {
 }
 
 const format_date = (createdDate, updatedDate) => {
-    const dateObj = new Date(createdDate);
-
-    const day = `0${dateObj.getDate()}`.slice(-2);
-    const month = `0${dateObj.getMonth()+1}`.slice(-2);
-    const year = dateObj.getFullYear();
-
-    const hour = `0${dateObj.getHours()}`.slice(-2);
-    const minute = `0${dateObj.getMinutes()}`.slice(-2);
+    const cDate = new Date(createdDate);
+    const uDate = new Date(updatedDate);
     
-    if (createdDate != updatedDate){
-        return `<p class="post-date">${day}-${month}-${year} ${hour}:${minute} <em>(edited)</em></p>`
+    const day = `0${cDate.getDate()}`.slice(-2);
+    const month = `0${cDate.getMonth()+1}`.slice(-2);
+    const year = cDate.getFullYear();
+
+    const hour = `0${cDate.getHours()}`.slice(-2);
+    const minute = `0${cDate.getMinutes()}`.slice(-2);
+    
+    if (cDate.getTime() != uDate.getTime()){
+        return `${day}-${month}-${year} ${hour}:${minute} <em>(edited)</em>`
     } else {
-        return `<p class="post-date">${day}-${month}-${year} ${hour}:${minute}</p>`
+        return `${day}-${month}-${year} ${hour}:${minute}`
     }
 
 }
 
-module.exports = {format_post, format_date}  ;
+const isUser = (userId, contentUserId) => userId === contentUserId ? true : false;
+
+module.exports = {format_post, format_date, isUser}  ;
